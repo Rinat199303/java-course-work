@@ -12,7 +12,7 @@ public class ImageToUnicodeConverter implements TextGraphicsConverter {
     private int height;
     private double maxRatio;
     private TextColorSchema schema;
-    private String[][] picArray;
+
 
     @Override
     public String convert(String url) throws IOException, BadImageSizeException {
@@ -49,7 +49,7 @@ public class ImageToUnicodeConverter implements TextGraphicsConverter {
 
         WritableRaster bwRaster = bwImg.getRaster();
         TextColorSchema schema = new ColorConverter();
-        picArray = new String[bwRaster.getHeight()][bwRaster.getWidth()];
+        String[][] picArray = new String[bwRaster.getHeight()][bwRaster.getWidth()];
         for (int i = 0; i < bwRaster.getWidth(); i++) {
             for (int j = 0; j < bwRaster.getHeight(); j++) {
                 int color = bwRaster.getPixel(i, j, new int[3])[0];
