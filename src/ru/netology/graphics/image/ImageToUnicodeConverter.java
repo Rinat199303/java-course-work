@@ -21,8 +21,8 @@ public class ImageToUnicodeConverter implements TextGraphicsConverter {
 
         int newWidth = img.getWidth();
         int newHeight = img.getHeight();
-        double ratioImgHW = newHeight / newWidth;
-        double ratioWH = newWidth / newHeight;
+        double ratioImgHW = (double) newHeight / newWidth;
+        double ratioWH = (double) newWidth / newHeight;
         if (ratioImgHW > maxRatio) {
             throw new BadImageSizeException(ratioImgHW, maxRatio);
         }
