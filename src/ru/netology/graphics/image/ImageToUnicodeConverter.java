@@ -19,22 +19,23 @@ public class ImageToUnicodeConverter implements TextGraphicsConverter {
 
         BufferedImage img = ImageIO.read(new URL(url));
 
-        int newWidth  = img.getWidth();
+        int newWidth = img.getWidth();
         int newHeight = img.getHeight();
-        int ratioImgHW = newHeight/newWidth;
-        int ratioWH = newWidth/newHeight;
+        double ratioImgHW = newHeight / newWidth;
+        double ratioWH = newWidth / newHeight;
         if (ratioImgHW > maxRatio) {
-            new BadImageSizeException(ratioImgHW, maxRatio);
+            throw new BadImageSizeException(ratioImgHW, maxRatio);
         }
         if (ratioWH > maxRatio) {
-            new BadImageSizeException(ratioWH, maxRatio);
+            throw new BadImageSizeException(ratioWH, maxRatio);
         }
         if (newWidth > width) {
-            double difference = newWidth/width;
+            double difference = (double) newWidth / width;
             newHeight /= difference;
             newWidth = width;
-        } if (newHeight > height) {
-            double difference = newHeight / height;
+        }
+        if (newHeight > height) {
+            double difference = (double) newHeight / height;
             newWidth /= difference;
             newHeight = height;
         }
